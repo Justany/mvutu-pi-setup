@@ -317,6 +317,7 @@ sudo sed -i "/^paths:/a\\
       -rtsp_transport tcp\\
       -i rtsp://localhost:8554/\$MTX_PATH\\
       -c:v libx264 -preset ultrafast -c:a copy\\
+      -rtsp_transport tcp\\
       -f rtsp\\
       rtsp://$VPS_IP:8554/\$MTX_PATH\\
     runOnReadyRestart: true\\
