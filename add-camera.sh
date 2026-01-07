@@ -316,7 +316,8 @@ sudo sed -i "/^paths:/a\\
       ffmpeg -hide_banner -loglevel error\\
       -rtsp_transport tcp\\
       -i rtsp://localhost:8554/\$MTX_PATH\\
-      -c copy -f rtsp\\
+      -c:v libx264 -preset ultrafast -c:a copy\\
+      -f rtsp\\
       rtsp://$VPS_IP:8554/\$MTX_PATH\\
     runOnReadyRestart: true\\
 " "$CONFIG_FILE"

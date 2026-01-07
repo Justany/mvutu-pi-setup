@@ -1,0 +1,18 @@
+[3/6] Téléchargement MediaMTX v1.9.3...
+[4/6] Installation binaire...
+[5/6] Copie configuration...
+[6/6] Création service systemd...
+Created symlink '/etc/systemd/system/multi-user.target.wants/mediamtx.service' → '/etc/systemd/system/mediamtx.service'.
+
+=== Installation terminée ===
+
+Endpoints disponibles:
+  RTSP:   rtsp://192.168.100.201:8554/cam1
+  WebRTC: http://192.168.100.201:8889/cam1
+  HLS:    http://192.168.100.201:8888/cam1
+  API:    http://192.168.100.201:9997/v3/paths/list
+
+Commandes utiles:
+  sudo systemctl status mediamtx
+  sudo journalctl -u mediamtx -f
+  sudo systemctl restart mediamtx

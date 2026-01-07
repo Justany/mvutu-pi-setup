@@ -119,8 +119,15 @@ paths:
       ffmpeg -hide_banner -loglevel error
       -rtsp_transport tcp
       -i rtsp://localhost:8554/$MTX_PATH
-      -c copy -f rtsp
+      -c:v libx264 -preset ultrafast -c:a copy
+      -f rtsp
       rtsp://69.62.108.253:8554/$MTX_PATH
+      
+      # ffmpeg -hide_banner -loglevel error
+      # -rtsp_transport tcp
+      # -i rtsp://localhost:8554/$MTX_PATH
+      # -c copy -f rtsp
+      # rtsp://69.62.108.253:8554/$MTX_PATH
     runOnReadyRestart: true
 
 ###############################################
