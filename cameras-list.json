@@ -1,0 +1,114 @@
+{
+  "cameras": [
+    {
+      "serial": "BC9741129",
+      "ip": "192.168.100.65",
+      "port": 554,
+      "mac_address": "34:C6:DD:12:67:CE",
+      "rtsp_state": "open",
+      "verification_code": "CKSIDG",
+      "path": "/Streaming/Channels/102",
+      "registered": true
+    },
+    {
+      "serial": "BC9740999",
+      "ip": "192.168.100.74",
+      "port": 554,
+      "mac_address": "34:C6:DD:12:67:4C",
+      "rtsp_state": "open",
+      "verification_code": "CMGYZE",
+      "path": "/Streaming/Channels/102",
+      "registered": true
+    },
+    {
+      "serial": "BC9749815",
+      "ip": "192.168.100.73",
+      "port": 554,
+      "mac_address": "34:C6:DD:12:89:E6",
+      "rtsp_state": "open",
+      "verification_code": "UYAPSI",
+      "path": "/Streaming/Channels/102",
+      "registered": true
+    },
+    {
+      "serial": "BC9740308",
+      "ip": "192.168.100.69",
+      "port": 554,
+      "mac_address": "34:C6:DD:12:64:99",
+      "rtsp_state": "open",
+      "verification_code": "PKHKNQ",
+      "path": "/Streaming/Channels/102",
+      "registered": true
+    },
+    {
+      "serial": "BC9740524",
+      "ip": "192.168.100.75",
+      "port": 554,
+      "mac_address": "34:C6:DD:12:65:71",
+      "rtsp_state": "open",
+      "verification_code": "AGQIKN",
+      "path": "/Streaming/Channels/102",
+      "registered": true
+    },
+    {
+      "serial": "BC9740267",
+      "ip": "192.168.100.71",
+      "port": 554,
+      "mac_address": "34:C6:DD:12:64:70",
+      "rtsp_state": "open",
+      "verification_code": "BXQXJN",
+      "path": "/Streaming/Channels/102",
+      "registered": true
+    },
+    {
+      "serial": "BC9741433",
+      "ip": "192.168.100.204",
+      "port": 554,
+      "mac_address": "34:C6:DD:12:68:FE",
+      "rtsp_state": "open",
+      "verification_code": "SEEQDZ",
+      "path": "/Streaming/Channels/102",
+      "registered": true
+    },
+    {
+      "serial": "BC9740731",
+      "ip": "192.168.100.66",
+      "port": 554,
+      "mac_address": "34:C6:DD:12:66:40",
+      "rtsp_state": "open",
+      "verification_code": "GWIGLM",
+      "path": "/Streaming/Channels/102",
+      "registered": true
+    },
+    {
+      "serial": "BC9740589",
+      "ip": "192.168.100.188",
+      "port": 554,
+      "mac_address": "54:D6:0D:FD:0D:C5",
+      "rtsp_state": "open",
+      "verification_code": "AFJOMO",
+      "path": "/Streaming/Channels/102",
+      "registered": true
+    },
+    {
+      "serial": "BC9740993",
+      "ip": "192.168.100.203",
+      "port": 554,
+      "mac_address": "34:C6:DD:12:67:46",
+      "rtsp_state": "open",
+      "verification_code": "QNGBGU",
+      "path": "/Streaming/Channels/102",
+      "registered": true
+    },
+    {
+      "serial": "BC9740405",
+      "ip": "192.168.100.202",
+      "port": 554,
+      "mac_address": "34:C6:DD:12:64:FA",
+      "rtsp_state": "open",
+      "verification_code": "YPBDIX",
+      "path": "/Streaming/Channels/102",
+      "registered": true
+    }
+  ]
+}
