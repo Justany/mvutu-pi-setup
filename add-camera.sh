@@ -306,7 +306,8 @@ RTSP_URL="rtsp://$USERNAME:$PASSWORD@$CAM_IP:$CAM_PORT$CAM_PATH"
 # Ajouter la caméra
 echo "Ajout de $CAM_NAME..."
 
-sudo sed -i "/^###.*Performance/i\\
+# Trouver la ligne "paths:" et insérer après
+sudo sed -i "/^paths:/a\\
   $CAM_NAME:\\
     source: $RTSP_URL\\
     sourceProtocol: tcp\\
