@@ -1,0 +1,133 @@
+# MediaMTX Configuration - Raspberry Pi Local
+# Proxy RTSP cameras + WebRTC local + Push VPS
+
+###############################################
+# General Configuration
+###############################################
+
+logLevel: info
+logDestinations: [stdout]
+
+api: true
+apiAddress: :9997
+
+metrics: true
+metricsAddress: :9999
+
+###############################################
+# Authentication - Open pour usage local
+###############################################
+
+authInternalUsers:
+  - user: any
+    pass:
+    ips: []
+    permissions:
+      - action: api
+      - action: metrics
+      - action: publish
+      - action: read
+        path:
+      - action: playback
+        path:
+
+###############################################
+# Protocol Configuration
+###############################################
+
+# RTSP - entrée caméras + sortie locale
+rtsp: true
+rtspAddress: :8554
+rtspTransports: [tcp]
+
+# RTMP - optionnel
+rtmp: false
+rtmpAddress: :1935
+
+# HLS - pour fallback navigateur
+hls: true
+hlsAddress: :8888
+hlsAlwaysRemux: true
+hlsVariant: fmp4
+hlsSegmentCount: 5
+hlsSegmentDuration: 1s
+
+# WebRTC - sortie principale pour Flutter/Android TV
+webrtc: true
+webrtcAddress: :8889
+webrtcAllowOrigins: ["*"]
+webrtcICEServers2:
+  - url: stun:stun.l.google.com:19302
+
+###############################################
+# Path Configuration - Caméras EZVIZ
+###############################################
+
+pathDefaults:
+  source: publisher
+  sourceOnDemand: true
+  sourceOnDemandStartTimeout: 10s
+  sourceOnDemandCloseAfter: 10s
+  readTimeout: 10s
+  writeTimeout: 10s
+
+paths:
+  # ===== CAMERAS HIKVISION/EZVIZ =====
+  
+  cam1:
+    source: rtsp://admin:AFJOMO@192.168.100.188:554/Streaming/Channels/102
+    sourceProtocol: tcp
+    sourceOnDemand: false
+    # Push vers VPS quand le stream est prêt
+    runOnReady: >
+      ffmpeg -hide_banner -loglevel error
+      -rtsp_transport tcp
+      -i rtsp://localhost:8554/$MTX_PATH
+      -c copy -f rtsp
+      rtsp://69.62.108.253:8554/$MTX_PATH
+    runOnReadyRestart: true
+
+  cam2:
+    source: rtsp://admin:AGQIKN@192.168.100.75:554/Streaming/Channels/102
+    sourceProtocol: tcp
+    sourceOnDemand: false
+    runOnReady: >
+      ffmpeg -hide_banner -loglevel error
+      -rtsp_transport tcp
+      -i rtsp://localhost:8554/$MTX_PATH
+      -c copy -f rtsp
+      rtsp://69.62.108.253:8554/$MTX_PATH
+    runOnReadyRestart: true
+
+  cam3:
+    source: rtsp://admin:UYAPSI@192.168.100.73:554/Streaming/Channels/102
+    sourceProtocol: tcp
+    sourceOnDemand: false
+    runOnReady: >
+      ffmpeg -hide_banner -loglevel error
+      -rtsp_transport tcp
+      -i rtsp://localhost:8554/$MTX_PATH
+      -c copy -f rtsp
+      rtsp://69.62.108.253:8554/$MTX_PATH
+    runOnReadyRestart: true
+
+  cam4:
+    source: rtsp://admin:WJQMCI@192.168.100.200:554/Streaming/Channels/102
+    sourceProtocol: tcp
+    sourceOnDemand: false
+    runOnReady: >
+      ffmpeg -hide_banner -loglevel error
+      -rtsp_transport tcp
+      -i rtsp://localhost:8554/$MTX_PATH
+      -c copy -f rtsp
+      rtsp://69.62.108.253:8554/$MTX_PATH
+    runOnReadyRestart: true
+
+###############################################
+# Performance Tuning pour Pi
+###############################################
+
+readTimeout: 10s
+writeTimeout: 10s
+writeQueueSize: 1024
+udpMaxPayloadSize: 1472
