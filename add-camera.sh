@@ -307,16 +307,41 @@ RTSP_URL="rtsp://$USERNAME:$PASSWORD@$CAM_IP:$CAM_PORT$CAM_PATH"
 echo "Ajout de $CAM_NAME..."
 
 # Trouver la ligne "paths:" et insérer après
+# sudo sed -i "/^paths:/a\\
+#   $CAM_NAME:\\
+#     source: $RTSP_URL\\
+#     sourceProtocol: tcp\\
+#     sourceOnDemand: true\\
+#     runOnReady: >\\
+#       ffmpeg -hide_banner -loglevel error\\
+#       -rtsp_transport tcp\\
+#       -i rtsp://localhost:8554/\$MTX_PATH\\
+#       -c:v libx264 -preset ultrafast -c:a copy\\
+#       -rtsp_transport tcp\\
+#       -f rtsp\\
+#       rtsp://$VPS_IP:8554/\$MTX_PATH\\
+#     runOnReadyRestart: true\\
+# " "$CONFIG_FILE"
+
+# Trouver la ligne "paths:" et insérer après
+# Trouver la ligne "paths:" et insérer après
 sudo sed -i "/^paths:/a\\
   $CAM_NAME:\\
     source: $RTSP_URL\\
     sourceProtocol: tcp\\
-    sourceOnDemand: false\\
+    sourceOnDemand: true\\
+    sourceOnDemandStartTimeout: 5s\\
+    sourceOnDemandCloseAfter: 30s\\
+    maxReaders: 2\\
     runOnReady: >\\
       ffmpeg -hide_banner -loglevel error\\
       -rtsp_transport tcp\\
+      -fflags nobuffer -flags low_delay\\
       -i rtsp://localhost:8554/\$MTX_PATH\\
-      -c:v libx264 -preset ultrafast -c:a copy\\
+      -c:v libx264 -preset ultrafast -tune zerolatency\\
+      -b:v 300k -maxrate 400k -bufsize 200k\\
+      -g 30 -keyint_min 15\\
+      -an\\
       -rtsp_transport tcp\\
       -f rtsp\\
       rtsp://$VPS_IP:8554/\$MTX_PATH\\
