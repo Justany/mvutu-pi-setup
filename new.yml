@@ -261,7 +261,7 @@ rtspAuthMethods: [basic]
 # Global settings -> RTMP server
 
 # Enable publishing and reading streams with the RTMP protocol.
-rtmp: yes
+rtmp: no
 # Address of the RTMP listener. This is needed only when encryption is "no" or "optional".
 rtmpAddress: :1935
 # Encrypt connections with TLS (RTMPS).
@@ -281,7 +281,7 @@ rtmpServerCert: server.crt
 # Global settings -> HLS server
 
 # Enable reading streams with the HLS protocol.
-hls: yes
+hls: no
 # Address of the HLS listener.
 hlsAddress: :8888
 # Enable TLS/HTTPS on the HLS server.
@@ -303,7 +303,7 @@ hlsAllowOrigin: "*"
 hlsTrustedProxies: []
 # By default, HLS is generated only when requested by a user.
 # This option allows to generate it always, avoiding the delay between request and generation.
-hlsAlwaysRemux: yes
+hlsAlwaysRemux: no
 # Variant of the HLS protocol to use. Available options are:
 # * mpegts - uses MPEG-TS segments, for maximum compatibility.
 # * fmp4 - uses fragmented MP4 segments, more efficient.
@@ -394,7 +394,7 @@ webrtcTrackGatherTimeout: 2s
 # Global settings -> SRT server
 
 # Enable publishing and reading streams with the SRT protocol.
-srt: yes
+srt: no
 # Address of the SRT listener.
 srtAddress: :8890
 
@@ -622,7 +622,7 @@ pathDefaults:
   #   a regular expression.
   runOnDemand:
   # Restart the command if it exits.
-  runOnDemandRestart: no
+  runOnDemandRestart: yes
   # Readers will be put on hold until the runOnDemand command starts publishing
   # or until this amount of time has passed.
   runOnDemandStartTimeout: 10s
@@ -699,47 +699,47 @@ pathDefaults:
 paths:
   CAM-BC9740405:
     source: rtsp://admin:YPBDIX@192.168.100.11:554/h264_preview_01_main
-    sourceProtocol: tcp
+    rtspTransport: tcp
 
   CAM-BC9740993:
-    source: rtsp://admin:QNGBGU@192.168.100.8:554/h264_preview_01_main
-    sourceProtocol: tcp
+    source: rtsp://admin:QNGBGU@192.168.100.9:554/h264_preview_01_main
+    rtspTransport: tcp
 
   CAM-BC9740731:
     source: rtsp://admin:GWIGLM@192.168.100.8:554/h264_preview_01_main
-    sourceProtocol: tcp
+    rtspTransport: tcp
 
   CAM-BC9741433:
     source: rtsp://admin:SEEQDZ@192.168.100.15:554/h264_preview_01_main
-    sourceProtocol: tcp
+    rtspTransport: tcp
 
   CAM-BC9740267:
     source: rtsp://admin:BXQXJN@192.168.100.14:554/h264_preview_01_main
-    sourceProtocol: tcp
+    rtspTransport: tcp
 
   CAM-BC9740308:
     source: rtsp://admin:PKHKNQ@192.168.100.10:554/h264_preview_01_main
-    sourceProtocol: tcp
+    rtspTransport: tcp
 
   CAM-BC9741129:
     source: rtsp://admin:CKSIDG@192.168.100.65:554/h264_preview_01_main
-    sourceProtocol: tcp
+    rtspTransport: tcp
 
   CAM-BC9740999:
     source: rtsp://admin:CMGYZE@192.168.100.13:554/h264_preview_01_main
-    sourceProtocol: tcp
+    rtspTransport: tcp
 
   CAM-BC9749815:
     source: rtsp://admin:UYAPSI@192.168.100.73:554/h264_preview_01_main
-    sourceProtocol: tcp
+    rtspTransport: tcp
 
   CAM-BC9740524:
     source: rtsp://admin:AGQIKN@192.168.100.75:554/h264_preview_01_main
-    sourceProtocol: tcp
+    rtspTransport: tcp
 
   CAM-BC9740589:
     source: rtsp://admin:AFJOMO@192.168.100.188:554/h264_preview_01_main
-    sourceProtocol: tcp
+    rtspTransport: tcp
 
   # Settings under path "all_others" are applied to all paths that
   # do not match another entry.
